@@ -118,6 +118,7 @@ def operasi_NOT():
         gambar_hasil = cv2.bitwise_not(mask)
         tampilkan_gambar(kanvas_sesudah, gambar_hasil, False)
 
+
 def tampilkan_histogram():
     global gambar_hasil
     if gambar_abu is not None:
@@ -203,8 +204,8 @@ baris1.pack()
 tombol_baris1 = [
     ("📂 Muat Gambar", muat_gambar),
     ("🖼 Tampilkan Asli", tampilkan_asli),
-    ("⚫ Ke Abu-abu", konversi_keabu),
-    ("⚪ Ke Biner", konversi_biner),
+    ("⚫ greyscale", konversi_keabu),
+    ("⚪ Biner", konversi_biner),
     ("💡 Kecerahan", atur_kecerahan)
 ]
 for i, (teks, perintah) in enumerate(tombol_baris1):
@@ -215,10 +216,10 @@ for i, (teks, perintah) in enumerate(tombol_baris1):
 baris2 = Frame(frame_tombol, bg=WARNA_LATAR)
 baris2.pack(pady=5)
 tombol_baris2 = [
-    ("🔗 operasi NOT", operasi_logika),
+    ("🔗 operasi NOT", operasi_NOT),
     ("📊 Histogram", tampilkan_histogram),
-    ("✨ Penajaman", penajaman),
-    ("🌫 Pengaburan", pengaburan),
+    ("✨ sharpen", penajaman),
+    ("🌫 bluring", pengaburan),
     ("🪒 Deteksi Tepi", deteksi_tepi),
     ("🧱 Dilasi", dilasi),
 ]
