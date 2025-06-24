@@ -111,17 +111,11 @@ def atur_kecerahan():
         gambar_hasil = cv2.add(gambar_abu, 50)
         tampilkan_gambar(kanvas_sesudah, gambar_hasil, False)
 
-def operasi_aritmatika():
+def operasi_NOT():
     global gambar_hasil
     if gambar_abu is not None:
-        konstanta = np.ones_like(gambar_abu) * 50
-        gambar_hasil = cv2.add(gambar_abu, konstanta)
-        tampilkan_gambar(kanvas_sesudah, gambar_hasil, False)
-
-def operasi_logika():
-    global gambar_hasil
-    if gambar_abu is not None:
-        gambar_hasil = cv2.inRange(gambar_abu, 100, 200)
+        mask = cv2.inRange(gambar_abu, 100, 200)
+        gambar_hasil = cv2.bitwise_not(mask)
         tampilkan_gambar(kanvas_sesudah, gambar_hasil, False)
 
 def tampilkan_histogram():
@@ -221,8 +215,7 @@ for i, (teks, perintah) in enumerate(tombol_baris1):
 baris2 = Frame(frame_tombol, bg=WARNA_LATAR)
 baris2.pack(pady=5)
 tombol_baris2 = [
-    ("➕ Aritmatika", operasi_aritmatika),
-    ("🔗 Logika", operasi_logika),
+    ("🔗 operasi NOT", operasi_logika),
     ("📊 Histogram", tampilkan_histogram),
     ("✨ Penajaman", penajaman),
     ("🌫 Pengaburan", pengaburan),
